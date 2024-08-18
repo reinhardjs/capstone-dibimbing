@@ -19,4 +19,5 @@ docker run --name dibimbing-ml-docker -p 1234:8001 dibimbing-ml-docker:v1.0
 ```
 
 ### Examples
-<img width="693" alt="image" src="https://github.com/user-attachments/assets/f114abeb-e28a-4f0c-8997-7caf358621f6">
+<img width="790" alt="image" src="https://github.com/user-attachments/assets/756a4e7b-9b7f-42e9-b112-794fd135b6b5">
+
