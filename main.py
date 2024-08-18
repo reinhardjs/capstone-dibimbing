@@ -7,9 +7,6 @@ import joblib
 
 app = FastAPI()
 
-# Load the Iris dataset
-# carprice = load_carprices()
-
 # Load the model
 filename = 'carprice_model.joblib'
 loaded_model = joblib.load(filename)
@@ -45,7 +42,5 @@ def predit_carprice(data: CarPriceData):
         ]
     ]) 
     predictions = loaded_model.predict(new_data)
-    # predicted_species = carprice.target_names[predictions[0]]
 
-    return {}
-    # return { "prediction": predicted_species }
+    return { "prediction": predictions[0] }
