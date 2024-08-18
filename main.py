@@ -43,4 +43,4 @@ def predit_carprice(data: CarPriceData):
     ]) 
     predictions = loaded_model.predict(new_data)
 
-    return { "prediction": predictions[0] }
+    return { "predictions": predictions }
