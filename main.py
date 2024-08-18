@@ -12,17 +12,17 @@ filename = 'carprice_model.joblib'
 loaded_model = joblib.load(filename)
 
 class CarPriceData(BaseModel):
-    brand: float = Body(..., gt=0, description="brand")
-    model: float = Body(..., gt=0, description="model")
-    type: float = Body(..., gt=0, description="type")
-    color: float = Body(..., gt=0, description="color")
-    year: float = Body(..., gt=0, description="year")
-    mileage: float = Body(..., gt=0, description="mileage")
-    transmission: float = Body(..., gt=0, description="transmission")
-    condition: float = Body(..., gt=0, description="condition")
-    price: float = Body(..., gt=0, description="price")
-    province: float = Body(..., gt=0, description="province")
-    region: float = Body(..., gt=0, description="region")
+    brand: float = Body(...)
+    model: float = Body(...)
+    type: float = Body(...)
+    color: float = Body(...)
+    year: float = Body(...)
+    mileage: float = Body(...)
+    transmission: float = Body(...)
+    condition: float = Body(...)
+    province: float = Body(...)
+    region: float = Body(...)
+    age: float = Body(...)
 
 @app.post("/predict-carprice")
 def predit_carprice(data: CarPriceData):
@@ -35,9 +35,9 @@ def predit_carprice(data: CarPriceData):
         data.mileage, 
         data.transmission, 
         data.condition, 
-        data.price, 
         data.province, 
-        data.region
+        data.region,
+        data.age
     ]).reshape(1, -1)
     predictions = loaded_model.predict(new_data)
 
