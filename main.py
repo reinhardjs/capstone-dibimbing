@@ -27,20 +27,18 @@ class CarPriceData(BaseModel):
 @app.post("/predict-carprice")
 def predit_carprice(data: CarPriceData):
     new_data = np.array([
-        [
-            data.brand, 
-            data.model, 
-            data.type, 
-            data.color, 
-            data.year, 
-            data.mileage, 
-            data.transmission, 
-            data.condition, 
-            data.price, 
-            data.province, 
-            data.region
-        ]
-    ]) 
+        data.brand, 
+        data.model, 
+        data.type, 
+        data.color, 
+        data.year, 
+        data.mileage, 
+        data.transmission, 
+        data.condition, 
+        data.price, 
+        data.province, 
+        data.region
+    ]).reshape(1, -1)
     predictions = loaded_model.predict(new_data)
 
-    return { "predictions": predictions }
+    return {"predictions": predictions.tolist()[0]}
