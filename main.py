@@ -18,8 +18,10 @@ class CarPriceData(BaseModel):
     color: float = Body(...)
     year: float = Body(...)
     mileage: float = Body(...)
-    transmission: float = Body(...)
-    condition: float = Body(...)
+    transmission_1: float = Body(...)
+    transmission_2: float = Body(...)
+    condition_1: float = Body(...)
+    condition_2: float = Body(...)
     province: float = Body(...)
     region: float = Body(...)
     age: float = Body(...)
@@ -27,17 +29,19 @@ class CarPriceData(BaseModel):
 @app.post("/predict-carprice")
 def predit_carprice(data: CarPriceData):
     new_data = np.array([
-        data.brand, 
-        data.model, 
-        data.type, 
-        data.color, 
-        data.year, 
-        data.mileage, 
-        data.transmission, 
-        data.condition, 
-        data.province, 
+        data.brand,
+        data.model,
+        data.type,
+        data.color,
+        data.year,
+        data.mileage,
+        data.transmission_1,
+        data.transmission_2,
+        data.condition_1,
+        data.condition_2,
+        data.province,
         data.region,
-        data.age
+        data.age,
     ]).reshape(1, -1)
     predictions = loaded_model.predict(new_data)
 
